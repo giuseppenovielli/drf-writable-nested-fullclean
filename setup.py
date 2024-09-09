@@ -2,7 +2,7 @@ import os
 import re
 from io import open
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 def get_version(package):
     """
@@ -12,7 +12,7 @@ def get_version(package):
     return re.search("__version__ = ['\"]([^'\"]+)['\"]", init_py).group(1)
 
 
-version = get_version('drf_fullclean')
+version = get_version('drf_writable_nested_fullclean')
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -31,8 +31,9 @@ setup(
     license=license,
     long_description_content_type="text/markdown",
     url="https://github.com/giuseppenovielli/drf-writable-nested-fullclean",
-    keywords=['django-rest-framework', 'model-serializer', 'validate', 'full_clean'],
-    packages=['drf_fullclean'],
+    keywords=['django-rest-framework', 'model-serializer', 'validate', 'full_clean', 'writable-nested', 'writable-nested-serializer', 'writable-nested-fullclean', 'writable-nested-fullclean-serializer'],
+    install_requires=["djangorestframework>=3.0.0", 'drf-writable-nested==0.7.0', 'drf-fullclean'],
+    packages=find_packages(exclude=['tests*']),
     project_urls={
         'Documentation': 'https://github.com/giuseppenovielli/drf-writable-nested-fullclean?tab=readme-ov-file#drf-writable-nested-fullclean',
         'Funding': 'https://buymeacoffee.com/giuseppedev',
